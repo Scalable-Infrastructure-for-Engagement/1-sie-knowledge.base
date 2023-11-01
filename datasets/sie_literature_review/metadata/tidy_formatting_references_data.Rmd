@@ -1,0 +1,124 @@
+---
+title: "Tidy-formatting literature references"
+author: "Francisco J. Guerrero"
+date: "2023-11-01"
+output: html_document
+---
+
+## Introduction
+
+This document provides a step-by-step explanation of the code used to clean and organize a dataset from a literature review. The audience for this guide is assumed to have low to mid levels of proficiency in R. We will walk through each part of the code to ensure you understand what's happening at every step.
+
+## Loading Libraries
+
+```{r eval=FALSE}
+# run for the first time => install.packages("librarian")
+librarian::shelf(dplyr,
+                 tidyr,
+                 stringr,
+                 tidytext)
+```
+
+- **dplyr**: Provides functions for data manipulation, such as `select`, `mutate`, and `filter`.
+- **tidyr**: Offers functions for tidying data, like `nest`.
+- **stringr**: Contains functions for string manipulation.
+- **tidytext**: Used for text mining tasks and includes `unnest_tokens`.
+
+## Preparing the Data
+
+### Data assembly
+
+We use Zotero as our reference manager but you can use any other of your preference. The functionality you need is to be able to export your collections as a .csv file that could be used in the analysis. Make sure to relable your column names accordingly. If you export directly from Zotero, you can run the code below
+
+```{r eval=FALSE}
+references_dat <- references_raw_dat %>% 
+  distinct() %>% 
+  select(Key, Title,`Abstract Note`,Author,`Publication Title`,`Publication Year`) %>% 
+  rename(key = Key,
+         title = Title,
+         abstract = `Abstract Note`,
+         authors = Author,
+         journal = `Publication Title`,
+         year = `Publication Year`) %>% 
+  mutate(abstract_lenght = nchar(abstract)) %>% 
+  filter(abstract_lenght > 20)%>% 
+  mutate(id = seq(from =1, to= nrow(.),by=1)) %>% 
+  mutate(id = factor(id))
+
+head(references_dat)
+```
+
+ For our analyses below, we won't need DOIs, PMIDs or arXiv IDs. We will focus
+ on Title, Abstract, Authors, Journal, Year. To keep column names formatting
+ simple, I use lowercase and spaces are added with (_) when needed.
+
+ In some cases is possible that the abstracts for the papers are not retrieved.
+ In such cases,the value returned would be NA (which is read as a character string
+ and not as the typical NA). It could also happen that the abstracts could be
+ partially retrieved. To filter these cases out, we will add another column to
+ the dataframe to count the character length of each abstract, and remove those
+ that are less than 20 characters long. Finally, we will add a sequential id and
+ make it a factor for visualization purposes.
+
+
+## Data Cleaning Process
+
+We are going to create a tidy dataset containing the cleaned titles and abstracts from the original dataset.
+
+### Step 1: Selecting and Renaming Columns
+
+```{r eval=FALSE}
+pub_comps <- c("title", "abstract")
+
+pub_dat_all <- references_dat %>% 
+  select(id, authors, year, journal, all_of(pub_comps))
+```
+
+Here, we select only the necessary columns (`id`, `authors`, `year`, `journal`, `title`, `abstract`) and store them in `pub_dat_all`.
+
+### Step 2: Tokenization
+
+```{r eval=FALSE}
+pub_dat_all <- pub_dat_all %>%
+  unnest_tokens(output = word, input = all_of(pub_comps), drop = FALSE)
+```
+
+`unnest_tokens` breaks the text in `title` and `abstract` into individual words ('tokens').
+
+### Step 3: Text Cleaning
+
+```{r eval=FALSE}
+pub_dat_all <- pub_dat_all %>%
+  mutate(across(all_of(pub_comps), str_to_lower)) %>%
+  mutate(across(all_of(pub_comps), ~if_else(. == "data", ., singularize(.)))) %>%
+  filter(!str_detect(word, "[:punct:]|[:digit:]")) %>%
+  anti_join(stop_words, by = "word")
+```
+
+1. `str_to_lower`: Converts all text to lowercase.
+2. `singularize`: Converts words to their singular form.
+3. `filter` and `str_detect`: Removes words containing punctuation or digits.
+4. `anti_join`: Removes common 'stop words' (e.g., 'the', 'a').
+
+### Step 4: Reassembling Text
+
+```{r eval=FALSE}
+pub_dat_all <- pub_dat_all %>%
+  group_by(id, authors, year, journal) %>%
+  summarise(across(all_of(pub_comps), list), .groups = "drop")
+```
+
+We group the data by `id`, `authors`, `year`, and `journal`, and then reassemble the words into tidy paragraphs.
+
+## Exporting the Data
+
+Finally, we export the cleaned data to a CSV file.
+
+```{r eval=FALSE}
+export <- "../../../2-sie-analytical.engine/text_analysis_tidy_references/data"
+write.csv(pub_dat_all, paste(export, "tidy_sie_literature_review.csv", sep = '/'), row.names = FALSE)
+```
+
+## Conclusion
+
+This document walked you through the process of cleaning and organizing literature review data using R. By following these steps, you can create a tidy dataset ready for further analysis.

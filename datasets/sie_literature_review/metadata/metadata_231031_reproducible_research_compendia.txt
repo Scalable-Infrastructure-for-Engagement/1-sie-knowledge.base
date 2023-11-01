@@ -1,0 +1,281 @@
+File Name: 231031_reproducible_research_compendia 
+
+File Size (in MB): NA 
+
+Creation Date (mm/dd/yy): NA 
+
+File Type: csv 
+
+Length of the dataset (number of rows): 50 
+
+Variables included in the dataset: Key, Item Type, Publication Year, Author, Title, Publication Title, ISBN, ISSN, DOI, Url, Abstract Note, Date, Date Added, Date Modified, Access Date, Pages, Num Pages, Issue, Volume, Number Of Volumes, Journal Abbreviation, Short Title, Series, Series Number, Series Text, Series Title, Publisher, Place, Language, Rights, Type, Archive, Archive Location, Library Catalog, Call Number, Extra, Notes, File Attachments, Link Attachments, Manual Tags, Automatic Tags, Editor, Series Editor, Translator, Contributor, Attorney Agent, Book Author, Cast Member, Commenter, Composer, Cosponsor, Counsel, Interviewer, Producer, Recipient, Reviewed Author, Scriptwriter, Words By, Guest, Number, Edition, Running Time, Scale, Medium, Artwork Size, Filing Date, Application Number, Assignee, Issuing Authority, Country, Meeting Name, Conference Name, Court, References, Reporter, Legal Status, Priority Numbers, Programming Language, Version, System, Code, Code Number, Section, Session, Committee, History, Legislative Body 
+
+Format of variables in the dataset:
+$Key
+[1] "character"
+
+$`Item Type`
+[1] "character"
+
+$`Publication Year`
+[1] "numeric"
+
+$Author
+[1] "character"
+
+$Title
+[1] "character"
+
+$`Publication Title`
+[1] "character"
+
+$ISBN
+[1] "character"
+
+$ISSN
+[1] "character"
+
+$DOI
+[1] "character"
+
+$Url
+[1] "character"
+
+$`Abstract Note`
+[1] "character"
+
+$Date
+[1] "character"
+
+$`Date Added`
+[1] "POSIXct" "POSIXt" 
+
+$`Date Modified`
+[1] "POSIXct" "POSIXt" 
+
+$`Access Date`
+[1] "POSIXct" "POSIXt" 
+
+$Pages
+[1] "character"
+
+$`Num Pages`
+[1] "logical"
+
+$Issue
+[1] "character"
+
+$Volume
+[1] "character"
+
+$`Number Of Volumes`
+[1] "logical"
+
+$`Journal Abbreviation`
+[1] "character"
+
+$`Short Title`
+[1] "character"
+
+$Series
+[1] "logical"
+
+$`Series Number`
+[1] "logical"
+
+$`Series Text`
+[1] "logical"
+
+$`Series Title`
+[1] "logical"
+
+$Publisher
+[1] "character"
+
+$Place
+[1] "character"
+
+$Language
+[1] "character"
+
+$Rights
+[1] "character"
+
+$Type
+[1] "logical"
+
+$Archive
+[1] "logical"
+
+$`Archive Location`
+[1] "logical"
+
+$`Library Catalog`
+[1] "character"
+
+$`Call Number`
+[1] "logical"
+
+$Extra
+[1] "character"
+
+$Notes
+[1] "logical"
+
+$`File Attachments`
+[1] "character"
+
+$`Link Attachments`
+[1] "character"
+
+$`Manual Tags`
+[1] "logical"
+
+$`Automatic Tags`
+[1] "character"
+
+$Editor
+[1] "logical"
+
+$`Series Editor`
+[1] "logical"
+
+$Translator
+[1] "logical"
+
+$Contributor
+[1] "logical"
+
+$`Attorney Agent`
+[1] "logical"
+
+$`Book Author`
+[1] "logical"
+
+$`Cast Member`
+[1] "logical"
+
+$Commenter
+[1] "logical"
+
+$Composer
+[1] "logical"
+
+$Cosponsor
+[1] "logical"
+
+$Counsel
+[1] "logical"
+
+$Interviewer
+[1] "logical"
+
+$Producer
+[1] "logical"
+
+$Recipient
+[1] "logical"
+
+$`Reviewed Author`
+[1] "logical"
+
+$Scriptwriter
+[1] "logical"
+
+$`Words By`
+[1] "logical"
+
+$Guest
+[1] "logical"
+
+$Number
+[1] "logical"
+
+$Edition
+[1] "character"
+
+$`Running Time`
+[1] "logical"
+
+$Scale
+[1] "logical"
+
+$Medium
+[1] "logical"
+
+$`Artwork Size`
+[1] "logical"
+
+$`Filing Date`
+[1] "logical"
+
+$`Application Number`
+[1] "logical"
+
+$Assignee
+[1] "logical"
+
+$`Issuing Authority`
+[1] "logical"
+
+$Country
+[1] "logical"
+
+$`Meeting Name`
+[1] "logical"
+
+$`Conference Name`
+[1] "character"
+
+$Court
+[1] "logical"
+
+$References
+[1] "logical"
+
+$Reporter
+[1] "logical"
+
+$`Legal Status`
+[1] "logical"
+
+$`Priority Numbers`
+[1] "logical"
+
+$`Programming Language`
+[1] "logical"
+
+$Version
+[1] "logical"
+
+$System
+[1] "logical"
+
+$Code
+[1] "logical"
+
+$`Code Number`
+[1] "logical"
+
+$Section
+[1] "logical"
+
+$Session
+[1] "logical"
+
+$Committee
+[1] "logical"
+
+$History
+[1] "logical"
+
+$`Legislative Body`
+[1] "logical"
+
+
+Names of columns with complete cases: Key, Item Type, Publication Year, Author, Title, Url, Abstract Note, Date, Date Added, Date Modified, Access Date, File Attachments 
+
+Names of columns with incomplete cases: Publication Title, ISBN, ISSN, DOI, Pages, Num Pages, Issue, Volume, Number Of Volumes, Journal Abbreviation, Short Title, Series, Series Number, Series Text, Series Title, Publisher, Place, Language, Rights, Type, Archive, Archive Location, Library Catalog, Call Number, Extra, Notes, Link Attachments, Manual Tags, Automatic Tags, Editor, Series Editor, Translator, Contributor, Attorney Agent, Book Author, Cast Member, Commenter, Composer, Cosponsor, Counsel, Interviewer, Producer, Recipient, Reviewed Author, Scriptwriter, Words By, Guest, Number, Edition, Running Time, Scale, Medium, Artwork Size, Filing Date, Application Number, Assignee, Issuing Authority, Country, Meeting Name, Conference Name, Court, References, Reporter, Legal Status, Priority Numbers, Programming Language, Version, System, Code, Code Number, Section, Session, Committee, History, Legislative Body 
+
+Names of columns with NA values: Publication Title, ISBN, ISSN, DOI, Pages, Num Pages, Issue, Volume, Number Of Volumes, Journal Abbreviation, Short Title, Series, Series Number, Series Text, Series Title, Publisher, Place, Language, Rights, Type, Archive, Archive Location, Library Catalog, Call Number, Extra, Notes, Link Attachments, Manual Tags, Automatic Tags, Editor, Series Editor, Translator, Contributor, Attorney Agent, Book Author, Cast Member, Commenter, Composer, Cosponsor, Counsel, Interviewer, Producer, Recipient, Reviewed Author, Scriptwriter, Words By, Guest, Number, Edition, Running Time, Scale, Medium, Artwork Size, Filing Date, Application Number, Assignee, Issuing Authority, Country, Meeting Name, Conference Name, Court, References, Reporter, Legal Status, Priority Numbers, Programming Language, Version, System, Code, Code Number, Section, Session, Committee, History, Legislative Body 
+
